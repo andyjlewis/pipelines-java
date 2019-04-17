@@ -38,3 +38,11 @@ steps:
   inputs:
     artifactName: 'war'
     pathToPublish: '$(build.artifactStagingDirectory)'
+
+- task: AzureWebApp@1
+  displayName: Azure Web App Deploy
+  inputs:
+    azureSubscription: <name-of-your-service-connection>
+    appType: webAppLinux
+    appName: azurejavademoapp
+    package: $(build.artifactstagingdirectory)/**/*.war
